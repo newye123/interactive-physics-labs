@@ -1,0 +1,15 @@
+{
+  "name": "interactive-physics-labs",
+  "version": "1.0.0",
+  "private": true,
+  "description": "高中电路章节的交互式课堂包：电路求解器、读数训练器、分镜脚本，零依赖纯静态",
+  "license": "SEE LICENSE IN LICENSE",
+  "type": "module",
+  "scripts": {
+    "test": "node tests/run_all.mjs",
+    "serve": "node tests/serve.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

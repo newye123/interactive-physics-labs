@@ -1,0 +1,90 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: node${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ["20", "22"]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: 自检（基线必须绿）
+        run: node tests/run_all.mjs
+
+      # ------------------------------------------------------------------
+      # 负控：守卫必须自证会红。
+      # 这一条不是形式——本仓库唯一的真实 bug（工作台「回目录」链接指向
+      # 不存在的 labs/index.html）就是被这个检查第一次跑抓出来的。
+      # ------------------------------------------------------------------
+      - name: 负控 1 — 把一个 src 改成不存在的文件
+        shell: bash
+        run: |
+          set -u
+          F=labs/circuit/workbench.html
+          B=$(sha256sum "$F" | cut -d' ' -f1)
+          cp "$F" "$RUNNER_TEMP/wb.bak"
+          sed -i 's|src="solver.js"|src="solver2.js"|' "$F"
+          set +e
+          node tests/check_assets.mjs > /dev/null 2>&1
+          RC=$?
+          set -e
+          cp "$RUNNER_TEMP/wb.bak" "$F"
+          A=$(sha256sum "$F" | cut -d' ' -f1)
+          [ "$B" = "$A" ] || { echo "::error::负控 1 还原失败"; exit 1; }
+          if [ "$RC" -ne 1 ]; then
+            echo "::error::负控 1 期望 rc=1，实际 rc=$RC —— 断链守卫是假绿"
+            exit 1
+          fi
+          echo "负控 1 OK：rc=1，还原 sha256 一致"
+
+      - name: 负控 2 — 探针失灵必须返回 2，不能返回 0
+        shell: bash
+        run: |
+          set -u
+          # 把三个页面换成没有任何引用的空壳：0 条引用 ≠ 0 条断链
+          for f in index.html labs/circuit/workbench.html "labs/11-3-读数训练器.html"; do
+            cp "$f" "$RUNNER_TEMP/$(echo "$f" | tr '/' '_').bak"
+            printf '<!doctype html><html><body>no refs</body></html>\n' > "$f"
+          done
+          set +e
+          node tests/check_assets.mjs > /dev/null 2>&1
+          RC=$?
+          set -e
+          for f in index.html labs/circuit/workbench.html "labs/11-3-读数训练器.html"; do
+            cp "$RUNNER_TEMP/$(echo "$f" | tr '/' '_').bak" "$f"
+          done
+          if [ "$RC" -ne 2 ]; then
+            echo "::error::负控 2 期望 rc=2，实际 rc=$RC —— 探针失灵会被读成通过"
+            exit 1
+          fi
+          echo "负控 2 OK：rc=2"
+
+      - name: 还原后基线必须重新变绿
+        run: node tests/run_all.mjs
+
+      - name: 还原后工作区必须干净
+        shell: bash
+        run: |
+          set -u
+          # 负控改了文件再还原，必须一字不差。用 git 自己判。
+          if [ -n "$(git status --porcelain)" ]; then
+            echo "::error::负控还原后工作区不干净："
+            git status --porcelain
+            exit 1
+          fi
+          echo "工作区干净"

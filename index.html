@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>第十一章 电路及其应用 · 交互式课堂包</title>
+<style>
+  :root{--paper:#F7F5F0;--panel:#fff;--line:#E3DFD6;--ink:#23272E;--ink2:#5A5F66;
+    --blue:#1F5BD8;--blue-soft:#E3EAFB;--green:#2F9E44;--green-soft:#E4F3E7;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Source Han Sans SC","Microsoft YaHei UI","Microsoft YaHei",sans-serif;padding:26px 30px 40px}
+  .top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:6px}
+  h1{font-size:34px;margin:0}
+  .ver{color:var(--ink2);font-size:15px}
+  .lead{color:var(--ink2);font-size:18px;margin:6px 0 22px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:16px}
+  .sec{background:var(--panel);border:2px solid var(--line);border-radius:12px;padding:14px 16px}
+  .sec h2{font-size:20px;margin:0 0 4px}
+  .sec .sub{color:var(--ink2);font-size:14px;margin-bottom:10px}
+  .mod{display:flex;align-items:center;justify-content:space-between;gap:10px;
+    padding:8px 10px;border:1.5px dashed var(--line);border-radius:8px;margin-top:8px}
+  .mod.ready{border-style:solid;border-color:var(--blue);background:var(--blue-soft)}
+  .mod .name{font-size:17px;font-weight:600}
+  .mod .desc{color:var(--ink2);font-size:13px}
+  .chip{font-size:12px;padding:2px 9px;border-radius:999px;background:#EEEBE3;color:var(--ink2);white-space:nowrap}
+  .chip.ready{background:var(--green-soft);color:var(--green);font-weight:700}
+  a.open{display:inline-block;background:var(--blue);color:#fff;text-decoration:none;
+    padding:8px 16px;border-radius:8px;font-size:16px;font-weight:600;white-space:nowrap}
+  a.open:hover{background:#1a4fc0}
+  footer{margin-top:26px;color:var(--ink2);font-size:15px;line-height:1.8}
+  footer b{color:var(--ink)}
+  code{background:#EEEBE3;border-radius:4px;padding:1px 6px;font-family:Consolas,monospace}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>第十一章 电路及其应用 <span class="ver">· 大屏课堂包 v0.1</span></h1>
+  <span class="ver">本地离线 · 双击即用 · 断网可上</span>
+</div>
+<p class="lead">每节课只挑 3 个模块：情境 → 全班预测 → 揭晓 → 落题。出口题全部对应教材页码。</p>
+
+<div class="grid">
+  <section class="sec" style="grid-column:1/-1;border-color:var(--blue)">
+    <h2>电路实验室 · 自由搭建 <span class="chip ready" style="margin-left:6px">已可用</span></h2>
+    <div class="sub">主菜 · 11.2–11.5 通用（教材 p57–77）· 能自己搭电路，实时出数</div>
+    <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;justify-content:space-between">
+      <div class="desc" style="max-width:860px;font-size:15px;line-height:1.9;color:var(--ink2)">
+        元件库搭电路（电池 / 电阻 / 灯泡 / 开关 / 滑动变阻器 / 电流表 / 电压表）；实时求解——
+        灯泡真的亮、会烧断，电流表超量程会警告；<b>真实表 / 理想表</b>一键切换看“表在骗你”；
+        数据记录自动画 U–I 图并拟合直线（测电阻时斜率=R；测电池时截距=E、斜率=−r）。
+        预置：串联两灯 · 并联两灯 · 欧姆定律 · 电动势内阻 · 电表在骗你 · 短路事故 · 空白台。
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-end">
+        <a class="open" href="labs/circuit/workbench.html">打开电路实验室 →</a>
+        <a class="open" style="background:#E8590C" href="labs/circuit/workbench.html?m=11-4">第 4 集 · 故事模式（试玩）→</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <h2>11.1 电源和电流</h2>
+    <div class="sub">M1–M2 · 教材 p53–56</div>
+    <div class="mod"><div><div class="name">开灯一瞬间</div><div class="desc">电子漂移 vs 电场接通</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">电流不消失</div><div class="desc">I=neSv 参数台</div></div><span class="chip">未开工</span></div>
+  </section>
+
+  <section class="sec">
+    <h2>11.2 导体的电阻</h2>
+    <div class="sub">M3–M5 · 教材 p57–61</div>
+    <div class="mod"><div><div class="name">R 到底听谁的</div><div class="desc">比值不动，R 只跟导体有关</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">拉丝机</div><div class="desc">L 变 2 倍，R 变 4 倍</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">加热灯丝</div><div class="desc">ρ-T 与超导</div></div><span class="chip">未开工</span></div>
+  </section>
+
+  <section class="sec">
+    <h2>11.3 实验：导体电阻率的测量</h2>
+    <div class="sub">M6–M7 · 教材 p62–67</div>
+    <div class="mod ready">
+      <div><div class="name">读数训练器 ★</div><div class="desc">游标卡尺 + 螺旋测微器 · 读读数 / 摆位置 / 找茬</div></div>
+      <a class="open" href="labs/11-3-读数训练器.html">打开 →</a>
+    </div>
+    <div class="mod"><div><div class="name">谁在骗我</div><div class="desc">内接外接误差可视化（87.4 Ω）</div></div><span class="chip">未开工</span></div>
+  </section>
+
+  <section class="sec">
+    <h2>11.4 串联电路和并联电路</h2>
+    <div class="sub">M8–M9 · 教材 p68–71</div>
+    <div class="mod"><div><div class="name">分蛋糕</div><div class="desc">串并联规律拖动台</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">表头改造间</div><div class="desc">改装电压表 / 电流表 · 爆表动画</div></div><span class="chip">未开工</span></div>
+  </section>
+
+  <section class="sec">
+    <h2>11.5 实验：练习使用多用电表</h2>
+    <div class="sub">M10–M11 · 教材 p72–74</div>
+    <div class="mod"><div><div class="name">欧姆表照 X 光</div><div class="desc">内部结构 · 中值电阻</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">规范操作闯关</div><div class="desc">错操作有后果</div></div><span class="chip">未开工</span></div>
+  </section>
+
+  <section class="sec">
+    <h2>章末综合</h2>
+    <div class="sub">M12–M13 · 教材 p75–77</div>
+    <div class="mod"><div><div class="name">黑箱侦探</div><div class="desc">复习 B 组 4</div></div><span class="chip">未开工</span></div>
+    <div class="mod"><div><div class="name">故障排查现场</div><div class="desc">电压挡逐点探</div></div><span class="chip">未开工</span></div>
+  </section>
+</div>
+
+<footer>
+  <b>课堂用法（一节课 40 分钟，3 个模块够了）</b><br>
+  ① 打开模块 → 全班先举手猜（1/2/3）→ 老师点"多数派" → <b>空格</b>揭晓 → 台本里的追问句收尾。<br>
+  ② 快捷键：<code>空格</code> 下一步 · <code>1 2 3</code> 选选项 · <code>R</code> 复位本题 · <code>T</code> 台本 · <code>F</code> 全屏（配翻页笔直接用）。<br>
+  ③ 电路实验室：<code>1–7</code> 选元件 → 点台面放置；点端子→点端子连线；点开关通断；拖滑变蓝点；<code>Del</code> 删除、<code>R</code> 复位预置、<code>S</code> 安全模式。<br>
+  ④ 老机器卡顿就开右上角「安全模式」；断网不受影响，整个文件夹拷到 U 盘也能跑。<br>
+  ⑤ 故事模式试玩：底部黑条 = 课堂编排器（计时 / 举手 / 抽人 / 小组计分 / Σ 数据）；橙按钮进第 4 集《一排灯全灭》。
+</footer>
+</body>
+</html>

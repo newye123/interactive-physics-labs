@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>电路实验室 · 自由搭建</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../stage/stage.css">
+</head>
+<body>
+
+<header id="topbar">
+  <div class="tb-left">
+    <span class="tb-badge">电路</span>
+    <span class="tb-title">电路实验室 · 自由搭建</span>
+  </div>
+  <div class="tb-right">
+    <label class="tb-dim">预置
+      <select id="presetSel"></select>
+    </label>
+    <button id="btnMode" class="tb-btn">表内阻：真实</button>
+    <button id="btnSafety" class="tb-btn">安全模式 S</button>
+    <button id="btnFull" class="tb-btn">全屏 F</button>
+    <button id="btnClear" class="tb-btn">清空台面</button>
+    <a class="tb-btn" href="../../index.html">回目录</a>
+  </div>
+</header>
+
+<main id="wrap">
+  <aside id="palette" class="pal">
+    <div class="pal-title">元件库</div>
+    <button data-type="battery"><span class="k">1</span>电池</button>
+    <button data-type="resistor"><span class="k">2</span>定值电阻</button>
+    <button data-type="bulb"><span class="k">3</span>小灯泡</button>
+    <button data-type="switch"><span class="k">4</span>开关</button>
+    <button data-type="rheostat"><span class="k">5</span>滑动变阻器</button>
+    <button data-type="ammeter"><span class="k">6</span>电流表</button>
+    <button data-type="voltmeter"><span class="k">7</span>电压表</button>
+    <p class="pal-hint">点一下元件，再点台面放置。<br>点<b>端子</b>→再点另一个<b>端子</b>，就连好一根线。<br>连线时按 Esc 取消。</p>
+  </aside>
+
+  <section id="bench">
+    <svg id="benchSvg" viewBox="0 0 1240 760" preserveAspectRatio="xMidYMid meet"></svg>
+  </section>
+
+  <aside id="right">
+    <div id="props"></div>
+    <div id="data">
+      <h3>数据记录 · U–I 图</h3>
+      <div class="recBtns">
+        <button id="btnRecord" class="primary">记录一组 U、I</button>
+        <button id="btnClearData">清空数据</button>
+      </div>
+      <div id="recTable"></div>
+      <svg id="plotSvg" viewBox="0 0 320 210" preserveAspectRatio="xMidYMid meet"></svg>
+      <p class="hint">记录的点自动画到图上；拟合 U = 截距 + 斜率·I：测电池时截距=E、斜率=−r，测电阻时斜率=R。</p>
+    </div>
+  </aside>
+</main>
+
+<footer id="hintbar">
+  <span><b>Del</b> 删除选中</span>
+  <span><b>Esc</b> 取消连线/放置</span>
+  <span><b>1–7</b> 选元件</span>
+  <span><b>R</b> 复位预置</span>
+  <span><b>S</b> 安全模式</span>
+  <span><b>F</b> 全屏</span>
+  <span class="dim">点开关通断 · 拖蓝点调滑变 · 点端子连线</span>
+</footer>
+
+<div id="toast"></div>
+
+<script src="solver.js"></script>
+<script src="model.js"></script>
+<script src="presets.js"></script>
+<script src="render.js"></script>
+<script src="app.js"></script>
+<script src="../stage/missions/11-4.js"></script>
+<script src="../stage/stage.js"></script>
+</body>
+</html>

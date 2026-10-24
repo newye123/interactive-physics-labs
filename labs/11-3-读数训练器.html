@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>11.3 读数训练器 · 第十一章 电路及其应用</title>
+<link rel="stylesheet" href="m6/style.css">
+</head>
+<body>
+
+<header id="topbar">
+  <div class="tb-left">
+    <span class="tb-badge">11.3</span>
+    <span class="tb-title">读数训练器</span>
+    <span id="qCounter" class="tb-dim"></span>
+  </div>
+  <div class="tb-right">
+    <span id="clock" class="tb-dim num">00:00</span>
+    <button id="btnDrawer" class="tb-btn">台本 T</button>
+    <button id="btnSafety" class="tb-btn">安全模式</button>
+    <button id="btnFull" class="tb-btn">全屏 F</button>
+  </div>
+</header>
+
+<main id="stage">
+
+  <!-- 开始屏幕 -->
+  <section id="startScreen" class="screen card">
+    <p class="crumb">第十一章 电路及其应用 · 实验：导体电阻率的测量</p>
+    <h1>读数训练器</h1>
+    <p class="lead">游标卡尺 + 螺旋测微器，三种题式：<b>读读数</b> / <b>摆位置</b> / <b>找茬</b>。全班一起做。</p>
+    <ol class="rules">
+      <li>读数和找茬题：<b>全班先举手指回答（1 / 2 / 3）</b>，老师点"多数派"，再按 <b class="num">空格</b> 揭晓。</li>
+      <li>摆位置题：拖动游标 / 鼓轮，或用「±」大按钮；对齐后按"确认"。</li>
+      <li>按 <b class="num">R</b> 复位本题，<b class="num">T</b> 打开发言台本，<b class="num">F</b> 全屏。</li>
+    </ol>
+    <div class="countPick" id="countPick">
+      <button data-count="3">3 题 · 约 2 分钟</button>
+      <button data-count="6" class="primary">6 题 · 约 4 分钟</button>
+      <button data-count="10">10 题 · 约 8 分钟</button>
+    </div>
+    <p class="dim">题量就是课堂用法的三档：快演 / 标准 / 探究。建议常态课用 6 题。</p>
+  </section>
+
+  <!-- 题目屏幕 -->
+  <section id="questionScreen" class="screen hidden">
+    <div id="instPanel">
+      <svg id="instSvg" viewBox="0 0 1060 300" preserveAspectRatio="xMidYMid meet" aria-label="仪器"></svg>
+      <div id="loupeWrap" class="hidden">
+        <div class="loupe-label">局部放大 · 对齐处</div>
+        <svg id="loupeSvg" viewBox="760 40 160 150" preserveAspectRatio="xMidYMid meet" aria-label="放大镜"></svg>
+      </div>
+      <div id="modelNote" class="dim"></div>
+    </div>
+    <aside id="sidePanel">
+      <div id="prompt"></div>
+      <div id="choices"></div>
+      <div id="setCtrls" class="hidden">
+        <div class="nudgeRow">
+          <button class="nudge" id="nDnBig"></button>
+          <button class="nudge" id="nDnStep"></button>
+          <button class="nudge" id="nUpStep"></button>
+          <button class="nudge" id="nUpBig"></button>
+        </div>
+        <button id="btnConfirm" class="big primary">确认对齐 ✓</button>
+        <div class="dim" id="setHint">拖动游标（或鼓轮），对齐后按「确认」；键盘 ← → 微调、↑ ↓ 走 1 mm</div>
+      </div>
+      <button id="btnReveal" class="big" disabled>揭晓答案（空格）</button>
+      <div id="feedback"></div>
+    </aside>
+  </section>
+
+  <!-- 结束屏幕 -->
+  <section id="endScreen" class="screen card hidden">
+    <h1 id="endTitle">本次完成</h1>
+    <p id="endScore" class="lead"></p>
+    <div class="taskcard">
+      <h2>真表任务卡 <span class="dim">· 课后到实验室，用真仪器逐条做一遍</span></h2>
+      <ol>
+        <li>游标卡尺：测小钢球直径、小圆管的内径与外径（教材 p64）</li>
+        <li>螺旋测微器：测一张 A4 纸的厚度、一根头发丝的直径（教材 p65）</li>
+        <li>教科书厚度、槽的宽度：换一种分度值再测一次，比较读数差异</li>
+        <li>互相出题：一人摆位置、一人读数、一人当裁判，只看谁翻车</li>
+        <li>对照教材 11.3 练习 1（p67），核对自己的读数规则</li>
+      </ol>
+    </div>
+    <div class="endBtns">
+      <button id="btnAgain" class="primary big">再来一组</button>
+      <button id="btnHome" class="big">返回开始</button>
+    </div>
+  </section>
+
+</main>
+
+<aside id="drawer">
+  <div class="drawer-head"><span>发言台本（老师可见）</span><button id="btnDrawerClose" class="tb-btn">关闭 ✕</button></div>
+  <div id="drawerBody"></div>
+</aside>
+
+<footer id="hintbar">
+  <span><b class="num">空格</b> 下一步 / 揭晓</span>
+  <span><b class="num">1 2 3</b> 选选项</span>
+  <span><b class="num">R</b> 复位本题</span>
+  <span><b class="num">T</b> 台本</span>
+  <span><b class="num">F</b> 全屏</span>
+</footer>
+
+<script src="m6/instruments.js"></script>
+<script src="m6/app.js"></script>
+</body>
+</html>

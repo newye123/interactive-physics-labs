@@ -1,0 +1,105 @@
+/* 课堂舞台 · 编排器 + 剧情层（附加在实验室页面上的样式）
+   复用实验室页面的 CSS 变量（--ink/--blue/--line 等）。 */
+
+/* ===== 底部编排条 ===== */
+#stageBar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 7px 14px;
+  background: var(--ink, #23272E); color: #fff; border-top: 2px solid #000; position: relative; z-index: 40; }
+.stg-group { position: relative; display: flex; align-items: center; gap: 6px; background: #2E333B;
+  border: 1px solid #3C434D; border-radius: 12px; padding: 5px 9px; transition: box-shadow .25s ease; }
+.stg-group.flash { box-shadow: 0 0 0 3px #FFD8A8; }
+.stg-label { font-size: 13px; color: #AEB6C2; white-space: nowrap; }
+.stg-btn { min-height: 44px; min-width: 54px; padding: 6px 12px; font-size: 17px; font-weight: 600;
+  cursor: pointer; border: 2px solid #4A515C; border-radius: 10px; background: #3A404A; color: #fff;
+  font-family: inherit; }
+.stg-btn:hover { border-color: #8B96A5; }
+.stg-btn.on { background: var(--blue, #1F5BD8); border-color: var(--blue, #1F5BD8); }
+.stg-btn.mini { min-width: 40px; min-height: 38px; padding: 2px 9px; font-size: 15px; font-weight: 500; }
+.stg-btn.sm { min-height: 38px; min-width: 0; padding: 4px 10px; font-size: 15px; }
+.stg-btn.ghost { background: transparent; border-color: #4A515C; color: #C3CAD4; font-weight: 500; }
+.stg-btn.big { min-height: 52px; padding: 8px 22px; font-size: 19px; }
+.stg-btn[disabled] { opacity: .35; cursor: default; }
+.stg-num { font-family: Consolas, monospace; font-size: 24px; font-weight: 700; min-width: 64px;
+  text-align: center; color: #FFD8A8; }
+.stg-num.done { color: #7CFF9B; }
+#stgTimer { min-width: 84px; }
+#stgTimer.done { color: #FF6B6B; }
+.stg-input { width: 54px; min-height: 40px; text-align: center; font-size: 17px; font-family: Consolas, monospace;
+  border-radius: 8px; border: 2px solid #4A515C; background: #22262D; color: #fff; }
+.stg-dim { color: #9AA3B0; font-size: 14px; white-space: nowrap; }
+.stg-mission { font-size: 15px; font-weight: 700; color: #FFD8A8; max-width: 230px; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap; }
+.stg-score { min-width: 64px; padding: 6px 10px; }
+.stg-score .n { display: inline-block; min-width: 24px; margin-left: 6px; font-family: Consolas, monospace;
+  color: #FFD8A8; font-style: normal; }
+
+/* ===== 弹出面板（剧情菜单 / 课堂数据） ===== */
+.stg-pop { display: none; position: absolute; bottom: calc(100% + 12px); left: 0; z-index: 70;
+  background: #fff; color: var(--ink, #23272E); border: 2px solid var(--line, #E3DFD6); border-radius: 14px;
+  padding: 10px; box-shadow: 0 16px 44px rgba(0, 0, 0, .28); min-width: 300px; max-width: 470px; }
+.stg-pop.open { display: block; }
+.stg-pop.right { left: auto; right: 0; }
+.stg-pop-title { font-weight: 700; font-size: 14px; color: var(--ink2, #5A5F66); margin: 2px 4px 8px; }
+.stg-pop-item { display: block; width: 100%; text-align: left; min-height: 48px; padding: 8px 12px;
+  margin-bottom: 6px; border: 2px solid var(--line, #E3DFD6); border-radius: 10px; background: #fff;
+  cursor: pointer; font-size: 16px; color: var(--ink, #23272E); font-family: inherit; }
+.stg-pop-item:hover { border-color: var(--blue, #1F5BD8); }
+.stg-pop-item small { display: block; color: var(--ink2, #5A5F66); font-size: 13px; margin-top: 2px; }
+.stg-pop-item.warn { border-color: #E03131; color: #E03131; }
+.stg-pop-text { font-size: 14px; line-height: 1.9; color: var(--ink, #23272E); background: #F7F5F0;
+  border-radius: 10px; padding: 8px 10px; margin-bottom: 8px; }
+
+/* ===== 任务卡横带 ===== */
+#stageRibbon { display: none; align-items: flex-start; gap: 16px; padding: 10px 16px 12px;
+  background: #FFF9EC; border-bottom: 2px solid #EADFC5; }
+.stg-rib-main { flex: 1; min-width: 0; }
+.stg-rib-head { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; flex-wrap: wrap; }
+.stg-chip { background: var(--orange, #E8590C); color: #fff; border-radius: 8px; padding: 2px 10px;
+  font-weight: 700; font-size: 15px; white-space: nowrap; }
+.stg-chip.t-debrief { background: var(--green, #2F9E44); }
+.stg-chip.t-file { background: #8C6D1F; }
+.stg-chip.t-exit { background: var(--blue, #1F5BD8); }
+.stg-rib-title { font-weight: 700; font-size: 17px; }
+.stg-goal { font-size: 19px; line-height: 1.6; margin: 2px 0 8px; }
+.stg-pi { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; background: #FDF3DC;
+  border: 2px dashed #D9C48A; border-radius: 12px; padding: 7px 10px; margin: 0 0 9px;
+  font-size: 15.5px; color: #6B5A1E; }
+.stg-pi-step { white-space: nowrap; }
+.stg-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.stg-act { min-height: 42px; padding: 6px 14px; font-size: 16px; font-weight: 600; border-radius: 10px;
+  cursor: pointer; border: 2px solid var(--blue, #1F5BD8); background: #fff; color: var(--blue, #1F5BD8);
+  font-family: inherit; }
+.stg-act:hover { background: var(--blue-soft, #E3EAFB); }
+.stg-act.done { border-color: var(--green, #2F9E44); background: var(--green-soft, #E4F3E7);
+  color: var(--green, #2F9E44); }
+.stg-act.todo { border: 2px dashed var(--line, #E3DFD6); color: var(--ink2, #5A5F66); background: #fff;
+  display: inline-flex; align-items: center; cursor: default; }
+.stg-snap { display: inline-block; vertical-align: top; background: #fff; border: 2px solid var(--line, #E3DFD6);
+  border-radius: 12px; padding: 8px 12px; margin: 0 10px 8px 0; min-width: 230px; }
+.stg-snap-h { font-weight: 700; font-size: 15px; color: var(--orange, #E8590C); margin-bottom: 5px; }
+.stg-snap .kv { font-size: 15px; padding: 2px 0; }
+.stg-take { font-size: 18px; font-weight: 700; color: var(--orange, #E8590C); margin: 2px 0 8px; }
+.stg-stats { font-size: 15px; color: var(--ink2, #5A5F66); background: #fff; border-radius: 10px;
+  padding: 7px 12px; display: inline-block; margin-top: 2px; }
+.stg-file-body { font-size: 18px; line-height: 1.75; background: #fff; border-left: 6px solid #8C6D1F;
+  border-radius: 8px; padding: 10px 14px; margin-bottom: 6px; }
+.stg-rib-side { display: flex; align-items: center; gap: 6px; padding-top: 4px; flex-wrap: wrap; }
+.stg-step { font-family: Consolas, monospace; color: var(--ink2, #5A5F66); font-size: 15px; min-width: 46px;
+  text-align: center; white-space: nowrap; }
+
+/* ===== 来电影幕（全屏浮层） ===== */
+#callOverlay { display: none; position: fixed; inset: 0; z-index: 80; align-items: center;
+  justify-content: center; background: radial-gradient(1200px 700px at 50% 42%, #262B33 0%, #101216 78%); }
+.stg-call-card { width: min(980px, 90vw); background: #1B1F25; border: 2px solid #3C434D;
+  border-radius: 20px; padding: 30px 40px 22px; color: #F2F4F8; box-shadow: 0 30px 80px rgba(0, 0, 0, .55); }
+.stg-call-head { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+.stg-avatar { width: 64px; height: 64px; border-radius: 50%; background: #3A404A; border: 2px solid #8B96A5;
+  display: flex; align-items: center; justify-content: center; font-size: 30px; font-weight: 700;
+  color: #FFD8A8; flex: 0 0 auto; }
+.stg-call-who { font-size: 22px; font-weight: 700; }
+.stg-call-tag { font-size: 15px; color: #9AA3B0; margin-top: 2px; }
+.stg-call-text { font-size: 37px; line-height: 1.6; min-height: 170px; display: flex; align-items: center; }
+.stg-call-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 14px;
+  gap: 12px; flex-wrap: wrap; }
+.stg-dots { display: flex; gap: 8px; }
+.stg-dot { width: 10px; height: 10px; border-radius: 50%; background: #3C434D; }
+.stg-dot.on { background: #FFD8A8; }

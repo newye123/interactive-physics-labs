@@ -1,0 +1,91 @@
+# 非商业使用许可 1.0（NC-1.0）
+
+**Non-Commercial Use License 1.0**
+
+著作权所有 © 2026 yt (GitHub: [@newye123](https://github.com/newye123))。保留所有权利。
+Copyright © 2026 yt (GitHub: [@newye123](https://github.com/newye123)). All rights reserved.
+
+---
+
+## 一、定义
+
+- **本作品**：本仓库中的全部内容，包括但不限于 `index.html`、`labs/`、`docs/`、`tests/` 下的代码、界面、仿真模型、脚本、文档与图表。
+- **不含**：任何教材原文、教材电子版、试题原题。教材内容的权利归原出版方所有，见 `NOTICE.md`。
+- **商业使用**：以直接或间接获取经济利益为目的的使用。包括但不限于：
+  - 销售、出租、许可、订阅收费；
+  - 向学校、机构、个人**收费交付**本作品或基于本作品的课堂服务；
+  - 用于付费课程、付费教辅、付费培训、付费社群；
+  - 用于投放广告、引流变现；
+  - 将其整体或实质部分并入商业教育产品。
+- **非商业使用**：不以获取经济利益为目的的个人学习、教学、教研、公开课、校内分享与内部试验。
+
+## 二、授权（仅限非商业）
+
+在遵守本许可全部条款的前提下，你可以：
+
+1. **使用**：为非商业目的在课堂、公开课、教研活动中使用本作品。
+2. **复制与分发**：为非商业目的复制、分发，但必须**完整保留**本许可与版权声明。
+3. **修改**：为非商业目的修改（改台词、改题目、改配色、改章节），但必须：
+   - 在显著位置注明「基于 yt 的 interactive-physics-labs 修改」并附原始仓库链接；
+   - 修改后的作品同样受本许可约束（相同方式共享）。
+4. **教学引用**：在论文、教案、分享中引用，需注明作者与出处链接。
+
+**特别说明**：老师为了自己班上的课改台词、改数据、改题目，**属于授权范围**，不需要另行申请。
+这是本作品最主要的使用方式，不要因为看到「许可」两个字就不敢改。
+
+## 三、禁止
+
+1. **禁止任何形式的商业使用**，无论是否收费、是否直接获利。
+2. **禁止销售**本作品或其衍生作品，包括在资源站、课程平台、知识付费平台上架收费版本。
+3. **禁止移除或篡改**版权声明、作者署名、许可文件与仓库出处链接。
+4. **禁止**将本作品整体或实质部分申请为商标、专利、软件著作权等排他性权利。
+5. **禁止**以本作品为基础训练、微调、蒸馏商业模型或商业教育产品。
+6. **禁止**将本作品与教材原文、试题原题打包分发——那部分不是我的，我没有权利授权给你。
+
+## 四、商业授权
+
+如需商业使用，**必须事先取得著作权人的书面授权**。
+
+通过 GitHub Issue 或仓库 README 中列明的联系方式提出申请，说明使用场景、范围与期限。
+
+## 五、免责声明与效果声明
+
+本作品按「现状」提供，不附带任何明示或默示的担保。
+
+**关于教学效果，必须说清楚**：本作品是一个教学辅助工具，**没有做过对照班实测**，
+不承诺任何学习增益。`docs/` 中出现的「正确率 +10~15 个百分点」是设计时的**达标线（目标值）**，
+不是已实现的结果。任何引用本作品时关于"提升多少"的说法，如果没有你自己的实测数据支撑，
+都不应归因于本作品。
+
+本作品不构成教学法建议、课程设计建议或合规建议。
+
+## 六、终止
+
+违反本许可任一条款，授权自动终止，你须立即停止使用并删除全部副本。
+
+## 七、其他
+
+- 本许可不授予商标权、肖像权及第三方内容的权利。
+- 本许可的简体中文版本为权威版本；英文译文仅供参考。
+
+---
+
+## English Summary (for reference only — the Chinese text above is authoritative)
+
+You may use, copy, distribute, and modify this work **for non-commercial educational purposes only**, provided you keep this license and the copyright notice intact, credit the original author with a link back, and license any derivative under the same terms.
+
+Teachers modifying scripts or exercises for their own classes are explicitly permitted — that is the intended use.
+
+**Commercial use of any kind is prohibited** without prior written permission. This includes selling it to schools, bundling it into paid courses, or using it to train commercial models.
+
+No textbook text is included in this repository. Textbook rights belong to the original publisher.
+
+The work is provided "as is". **No controlled classroom study has been run**, so no learning gain is claimed.
+
+---
+
+## 关于本许可的一个诚实说明
+
+- **这不是一份由律师起草的许可证。** 需要更强法律确定性请咨询律师，或改用 **PolyForm Noncommercial License 1.0.0**。
+- **本许可不是 OSI 认可的开源许可证。** 本作品是**源码公开（source-available）**，不是开源。
+- 本许可**不能追溯撤销已发生的授权**。本仓库若曾以其他许可发布过，已取得副本的人对其副本仍适用当时的许可。

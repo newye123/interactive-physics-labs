@@ -1,0 +1,107 @@
+/* 电路实验室 · 样式（沿用大屏课堂包色板） */
+:root {
+  --paper: #F7F5F0; --panel: #fff; --line: #E3DFD6;
+  --ink: #23272E; --ink2: #5A5F66;
+  --blue: #1F5BD8; --blue-soft: #E3EAFB;
+  --orange: #E8590C; --green: #2F9E44; --green-soft: #E4F3E7;
+  --red: #E03131; --red-soft: #FBE4E4;
+  --fs: 16px;
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; height: 100vh; display: grid; grid-template-rows: auto 1fr auto;
+  background: var(--paper); color: var(--ink); overflow: hidden;
+  font-family: "Source Han Sans SC", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif;
+}
+body.safety * { transition: none !important; animation: none !important; }
+
+/* 顶栏 */
+#topbar { display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  padding: 9px 16px; border-bottom: 2px solid var(--line); background: var(--panel); }
+.tb-left { display: flex; align-items: center; gap: 10px; }
+.tb-badge { background: var(--ink); color: #fff; border-radius: 6px; padding: 2px 10px; font-weight: 700; }
+.tb-title { font-size: 20px; font-weight: 700; }
+.tb-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tb-btn { min-height: 40px; padding: 5px 12px; font-size: 15px; cursor: pointer; text-decoration: none;
+  border: 2px solid var(--line); border-radius: 8px; background: var(--panel); color: var(--ink); }
+.tb-btn:hover { border-color: var(--blue); color: var(--blue); }
+.tb-btn.on { background: var(--blue); border-color: var(--blue); color: #fff; }
+.tb-dim { color: var(--ink2); font-size: 15px; }
+select { font-size: 15px; padding: 7px 8px; border-radius: 8px; border: 2px solid var(--line);
+  background: #fff; color: var(--ink); max-width: 240px; }
+
+/* 三栏 */
+#wrap { display: grid; grid-template-columns: 208px minmax(0, 1fr) 336px; gap: 12px; padding: 12px 16px; min-height: 0; }
+
+/* 元件库 */
+.pal { background: var(--panel); border: 2px solid var(--line); border-radius: 12px;
+  padding: 10px; display: flex; flex-direction: column; gap: 8px; overflow: auto; }
+.pal-title { font-weight: 700; color: var(--ink2); font-size: 14px; }
+.pal button { display: flex; align-items: center; gap: 9px; min-height: 52px; padding: 6px 12px;
+  font-size: 17px; cursor: pointer; text-align: left;
+  border: 2px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+.pal button:hover { border-color: var(--blue); }
+.pal button.on { border-color: var(--blue); background: var(--blue-soft); color: var(--blue); }
+.pal .k { display: inline-flex; width: 22px; height: 22px; align-items: center; justify-content: center;
+  background: var(--line); border-radius: 6px; font-size: 13px; color: var(--ink2); font-family: Consolas, monospace; }
+.pal button.on .k { background: var(--blue); color: #fff; }
+.pal-hint { color: var(--ink2); font-size: 13px; line-height: 1.7; margin: 6px 2px 0; }
+.pal-hint b { color: var(--ink); }
+
+/* 台面 */
+#bench { display: flex; min-width: 0; }
+#benchSvg { width: 100%; height: 100%; background: #fff; border: 2px solid var(--line);
+  border-radius: 12px; touch-action: none; }
+.flowmark path { stroke-dasharray: 14 14; animation: flowdash 1s linear infinite; }
+@keyframes flowdash { to { stroke-dashoffset: -28; } }
+.flowmark path { stroke-dasharray: 14 14; }
+.switch-lever { transition: transform .18s ease; }
+
+/* 右栏 */
+#right { display: flex; flex-direction: column; gap: 12px; min-height: 0; overflow: auto; }
+#props, #data { background: var(--panel); border: 2px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+#props h3, #data h3 { margin: 0 0 8px; font-size: 18px; }
+#right .hint { color: var(--ink2); font-size: 13px; line-height: 1.7; margin: 8px 0 0; }
+.live { background: var(--paper); border-radius: 10px; padding: 8px 12px; margin-bottom: 10px; }
+.kv { display: flex; justify-content: space-between; font-size: 15px; padding: 3px 0; }
+.kv b { font-family: Consolas, monospace; }
+.lab { font-size: 14px; color: var(--ink2); margin: 8px 0 6px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
+.chip { min-height: 38px; padding: 4px 12px; font-size: 15px; cursor: pointer;
+  border: 2px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); }
+.chip:hover { border-color: var(--blue); color: var(--blue); }
+button.primary { background: var(--blue); border-color: var(--blue); color: #fff; }
+button.primary:hover { background: #1a4fc0; color: #fff; }
+#props .primary, #data .primary { min-height: 44px; padding: 6px 14px; font-size: 16px; cursor: pointer;
+  border-radius: 9px; border: 2px solid var(--blue); }
+button.del { margin-top: 10px; min-height: 42px; padding: 5px 14px; font-size: 15px; cursor: pointer;
+  border: 2px solid var(--red); color: var(--red); background: #fff; border-radius: 9px; }
+button.del:hover { background: var(--red-soft); }
+.recBtns { display: flex; gap: 8px; margin-bottom: 8px; }
+.recBtns button { min-height: 44px; padding: 6px 12px; font-size: 15px; cursor: pointer;
+  border-radius: 9px; border: 2px solid var(--line); background: #fff; color: var(--ink); }
+#recTable table { width: 100%; border-collapse: collapse; font-family: Consolas, monospace; font-size: 14px; }
+#recTable th { color: var(--ink2); font-weight: 400; text-align: right; padding: 3px 4px; }
+#recTable td { text-align: right; padding: 3px 4px; border-top: 1px solid var(--line); }
+#recTable td:first-child, #recTable th:first-child { text-align: left; }
+#plotSvg { width: 100%; height: 210px; margin-top: 8px; }
+
+/* 底栏 / 提示 */
+#hintbar { display: flex; gap: 20px; flex-wrap: wrap; align-items: center;
+  padding: 7px 16px; border-top: 2px solid var(--line); background: var(--panel);
+  color: var(--ink2); font-size: 14px; }
+#hintbar b { color: var(--ink); font-family: Consolas, monospace; }
+#hintbar .dim { color: var(--ink2); }
+#toast { position: fixed; left: 50%; bottom: 64px; transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: #fff; padding: 12px 22px; border-radius: 12px; font-size: 18px;
+  opacity: 0; pointer-events: none; transition: all .25s ease; z-index: 50; max-width: 70vw; }
+#toast.show { opacity: 0.95; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 1180px) {
+  #wrap { grid-template-columns: 170px minmax(0, 1fr) 290px; gap: 8px; padding: 8px; }
+  .pal button { font-size: 15px; min-height: 46px; }
+}
+@media (max-width: 900px) {
+  #wrap { grid-template-columns: 1fr; grid-template-rows: auto minmax(280px, 1fr) auto; overflow: auto; }
+}
